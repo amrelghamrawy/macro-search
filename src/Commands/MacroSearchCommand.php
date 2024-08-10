@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Amrghamrawy\MacroSearch\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MacroSearchCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'macro-search';
 
     public $description = 'My command';
 
