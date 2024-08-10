@@ -2,10 +2,10 @@
 
 namespace Amrghamrawy\MacroSearch;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Amrghamrawy\MacroSearch\Commands\MacroSearchCommand;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class MacroSearchServiceProvider extends PackageServiceProvider
 {
@@ -23,14 +23,16 @@ class MacroSearchServiceProvider extends PackageServiceProvider
             ->hasMigration('create_macro_search_table')
             ->hasCommand(MacroSearchCommand::class);
     }
-    public function bootingPackage(){
+
+    public function bootingPackage()
+    {
 
         Builder::macro('search', function (string $term) {
             if (property_exists($this->getModel(), 'searchable')) {
                 $columns = $this->getModel()->searchable;
                 $term = strtolower($term);
 
-                $this->where(function($query) use ($columns, $term) {
+                $this->where(function ($query) use ($columns, $term) {
                     foreach ($columns as $column) {
                         if (str_contains($column, '.')) {
                             [$relation, $relationColumn] = explode('.', $column);

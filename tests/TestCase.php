@@ -2,9 +2,9 @@
 
 namespace Amrghamrawy\MacroSearch\Tests;
 
+use Amrghamrawy\MacroSearch\MacroSearchServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Amrghamrawy\MacroSearch\MacroSearchServiceProvider;
 
 class TestCase extends Orchestra
 {
